@@ -669,6 +669,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dataloader@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "dataloader@npm:2.0.0"
+  checksum: 9f10b9d2e35225b08a72435facfe40c0c124e329f43bd0fe4d67411ee667d12145f7ce63f9b74f73af8556dc6a98bae59147a5cca2171315dc1de509d4db04c0
+  languageName: node
+  linkType: hard
+
 "debug@npm:4, debug@npm:^4.0.1, debug@npm:^4.1.1, debug@npm:^4.3.1":
   version: 4.3.2
   resolution: "debug@npm:4.3.2"
@@ -1053,6 +1060,7 @@ __metadata:
     "@google-cloud/firestore": 4.15.1
     "@typescript-eslint/eslint-plugin": 4.31.1
     "@typescript-eslint/parser": 4.31.1
+    dataloader: ^2.0.0
     eslint: 7.32.0
     eslint-config-prettier: 8.3.0
     fp-ts: 2.11.2
@@ -1063,7 +1071,7 @@ __metadata:
     typescript: 4.4.3
   peerDependencies:
     "@google-cloud/firestore": ^4.0.0
-    fp-ts: ^2.0.0
+    fp-ts: ^2.11.0
   languageName: unknown
   linkType: soft
 

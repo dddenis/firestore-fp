@@ -38,6 +38,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@google-cloud/firestore", "npm:4.15.1"],
             ["@typescript-eslint/eslint-plugin", "virtual:0bdbe461af4cab97cc45a3ab0229d4a0b84b11675d8b608f45223daa1e0e4d58690e135d5d4e778b95935145900dd9eba0eab196d17d420071819bf2986c73fc#npm:4.31.1"],
             ["@typescript-eslint/parser", "virtual:0bdbe461af4cab97cc45a3ab0229d4a0b84b11675d8b608f45223daa1e0e4d58690e135d5d4e778b95935145900dd9eba0eab196d17d420071819bf2986c73fc#npm:4.31.1"],
+            ["dataloader", "npm:2.0.0"],
             ["eslint", "npm:7.32.0"],
             ["eslint-config-prettier", "virtual:0bdbe461af4cab97cc45a3ab0229d4a0b84b11675d8b608f45223daa1e0e4d58690e135d5d4e778b95935145900dd9eba0eab196d17d420071819bf2986c73fc#npm:8.3.0"],
             ["fp-ts", "npm:2.11.2"],
@@ -876,6 +877,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["dataloader", [
+        ["npm:2.0.0", {
+          "packageLocation": "./.yarn/cache/dataloader-npm-2.0.0-216fa8d208-9f10b9d2e3.zip/node_modules/dataloader/",
+          "packageDependencies": [
+            ["dataloader", "npm:2.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["debug", [
         ["npm:4.3.2", {
           "packageLocation": "./.yarn/cache/debug-npm-4.3.2-f0148b6afe-820ea160e2.zip/node_modules/debug/",
@@ -1332,6 +1342,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@google-cloud/firestore", "npm:4.15.1"],
             ["@typescript-eslint/eslint-plugin", "virtual:0bdbe461af4cab97cc45a3ab0229d4a0b84b11675d8b608f45223daa1e0e4d58690e135d5d4e778b95935145900dd9eba0eab196d17d420071819bf2986c73fc#npm:4.31.1"],
             ["@typescript-eslint/parser", "virtual:0bdbe461af4cab97cc45a3ab0229d4a0b84b11675d8b608f45223daa1e0e4d58690e135d5d4e778b95935145900dd9eba0eab196d17d420071819bf2986c73fc#npm:4.31.1"],
+            ["dataloader", "npm:2.0.0"],
             ["eslint", "npm:7.32.0"],
             ["eslint-config-prettier", "virtual:0bdbe461af4cab97cc45a3ab0229d4a0b84b11675d8b608f45223daa1e0e4d58690e135d5d4e778b95935145900dd9eba0eab196d17d420071819bf2986c73fc#npm:8.3.0"],
             ["fp-ts", "npm:2.11.2"],

@@ -20,11 +20,15 @@
   },
   "homepage": "https://github.com/dddenis/firestore-fp",
   "scripts": {
+    "dev": "docker-compose --file ./dev/docker-compose.yml --project-name @dddenis/firestore-fp",
     "format": "yarn format:base .",
     "format:base": "prettier --config ./.prettierrc.ci.js --write",
     "lint": "yarn lint:base .",
     "lint:base": "eslint --config .eslintrc.ci.js --max-warnings=0",
     "postinstall": "husky install"
+  },
+  "dependencies": {
+    "dataloader": "^2.0.0"
   },
   "devDependencies": {
     "@google-cloud/firestore": "4.15.1",
@@ -41,6 +45,6 @@
   },
   "peerDependencies": {
     "@google-cloud/firestore": "^4.0.0",
-    "fp-ts": "^2.0.0"
+    "fp-ts": "^2.11.0"
   }
 }
