@@ -1068,6 +1068,7 @@ __metadata:
     lint-staged: 11.1.2
     prettier: 2.4.0
     prettier-plugin-organize-imports: 2.3.3
+    ts-toolbelt: ^9.0.0
     typescript: 4.4.3
   peerDependencies:
     "@google-cloud/firestore": ^4.0.0
@@ -2207,6 +2208,13 @@ __metadata:
   dependencies:
     is-number: ^7.0.0
   checksum: f76fa01b3d5be85db6a2a143e24df9f60dd047d151062d0ba3df62953f2f697b16fe5dad9b0ac6191c7efc7b1d9dcaa4b768174b7b29da89d4428e64bc0a20ed
+  languageName: node
+  linkType: hard
+
+"ts-toolbelt@npm:^9.0.0":
+  version: 9.1.6
+  resolution: "ts-toolbelt@npm:9.1.6"
+  checksum: 7e65bbb5a1d4a1bface95d44ad0448284b3a786a24658a89b9e1211f3977d7653e10dca123eb5a66eb8eae8d1da61ba2da9038bbf869b381a7a245915c40b2fa
   languageName: node
   linkType: hard
 

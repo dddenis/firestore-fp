@@ -46,6 +46,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lint-staged", "npm:11.1.2"],
             ["prettier", "npm:2.4.0"],
             ["prettier-plugin-organize-imports", "virtual:0bdbe461af4cab97cc45a3ab0229d4a0b84b11675d8b608f45223daa1e0e4d58690e135d5d4e778b95935145900dd9eba0eab196d17d420071819bf2986c73fc#npm:2.3.3"],
+            ["ts-toolbelt", "npm:9.1.6"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
           ],
           "linkType": "SOFT",
@@ -1350,6 +1351,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lint-staged", "npm:11.1.2"],
             ["prettier", "npm:2.4.0"],
             ["prettier-plugin-organize-imports", "virtual:0bdbe461af4cab97cc45a3ab0229d4a0b84b11675d8b608f45223daa1e0e4d58690e135d5d4e778b95935145900dd9eba0eab196d17d420071819bf2986c73fc#npm:2.3.3"],
+            ["ts-toolbelt", "npm:9.1.6"],
             ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
           ],
           "linkType": "SOFT",
@@ -2684,6 +2686,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["to-regex-range", "npm:5.0.1"],
             ["is-number", "npm:7.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["ts-toolbelt", [
+        ["npm:9.1.6", {
+          "packageLocation": "./.yarn/cache/ts-toolbelt-npm-9.1.6-37ead314c8-7e65bbb5a1.zip/node_modules/ts-toolbelt/",
+          "packageDependencies": [
+            ["ts-toolbelt", "npm:9.1.6"]
           ],
           "linkType": "HARD",
         }]

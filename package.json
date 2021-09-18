@@ -6,6 +6,8 @@
     "email": "dddenjer@gmail.com"
   },
   "license": "MIT",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
   "engines": {
     "node": "14"
   },
@@ -20,6 +22,8 @@
   },
   "homepage": "https://github.com/dddenis/firestore-fp",
   "scripts": {
+    "build": "yarn clean && tsc",
+    "clean": "rm -rf ./build",
     "dev": "docker-compose --file ./dev/docker-compose.yml --project-name @dddenis/firestore-fp",
     "format": "yarn format:base .",
     "format:base": "prettier --config ./.prettierrc.ci.js --write",
@@ -28,7 +32,8 @@
     "postinstall": "husky install"
   },
   "dependencies": {
-    "dataloader": "^2.0.0"
+    "dataloader": "^2.0.0",
+    "ts-toolbelt": "^9.0.0"
   },
   "devDependencies": {
     "@google-cloud/firestore": "4.15.1",

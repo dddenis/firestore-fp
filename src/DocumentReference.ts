@@ -1,6 +1,7 @@
 import type * as firestore from '@google-cloud/firestore';
 import { taskEither } from 'fp-ts';
 import type { TaskEither } from 'fp-ts/TaskEither';
+import type { I } from 'ts-toolbelt';
 
 export interface DocumentReference<E> {
   readonly get: <A extends firestore.DocumentData>(
@@ -17,7 +18,7 @@ export interface DocumentReference<E> {
   ) => (reference: firestore.DocumentReference<A>) => TaskEither<E, firestore.WriteResult>;
 
   readonly update: <A extends firestore.DocumentData>(
-    data: UpdateInput<A>,
+    data: UpdateData<A>,
     precondition?: firestore.Precondition,
   ) => (reference: firestore.DocumentReference<A>) => TaskEither<E, firestore.WriteResult>;
 
@@ -67,20 +68,31 @@ export function mkDocumentReference<E>({
   };
 }
 
-export type UpdateInput<T extends firestore.DocumentData> = Partial<{
+export type UpdateData<T extends firestore.DocumentData> = Partial<{
   [K in Path<T>]: PathValue<T, K>;
 }>;
 
+type Path<T> = PathImpl<T> | keyof T;
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
-type PathImpl<T, K extends keyof T = keyof T> = K extends string
+type PathImpl<
+  T,
+  K extends keyof T = keyof T,
+  IT extends I.Iteration = I.IterationOf<0>,
+> = 8 extends I.Pos<IT>
+  ? never
+  : K extends string
   ? T[K] extends Record<string, any> | undefined
-    ? T[K] extends ArrayLike<any> | undefined
-      ? K | `${K}.${PathImpl<NonNullable<T[K]>, Exclude<keyof NonNullable<T[K]>, keyof any[]>>}`
-      : K | `${K}.${PathImpl<NonNullable<T[K]>, keyof NonNullable<T[K]>>}`
+    ?
+        | K
+        | `${K}.${PathImpl<
+            NonNullable<T[K]>,
+            Exclude<keyof NonNullable<T[K]>, keyof any[]>,
+            I.Next<IT>
+          >}`
     : K
   : never;
-
-type Path<T> = PathImpl<T> | keyof T;
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 type PathValue<T, P extends Path<T>> = P extends `${infer K}.${infer Rest}`
   ? K extends keyof T
@@ -91,4 +103,3 @@ type PathValue<T, P extends Path<T>> = P extends `${infer K}.${infer Rest}`
   : P extends keyof T
   ? T[P]
   : never;
-/* eslint-enable @typescript-eslint/no-explicit-any */
