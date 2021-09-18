@@ -1,66 +1,101 @@
 import type * as firestore from '@google-cloud/firestore';
-import { taskEither } from 'fp-ts';
+import { reader, readerTaskEither, taskEither } from 'fp-ts';
+import { pipe } from 'fp-ts/function';
+import type { Option } from 'fp-ts/Option';
+import type { ReaderTaskEither } from 'fp-ts/ReaderTaskEither';
 import type { TaskEither } from 'fp-ts/TaskEither';
 import type { I } from 'ts-toolbelt';
+import type { DataLoaderEnv } from './DataLoader';
+import { mkFirestoreDataloader } from './FirestoreDataLoader';
 
-export interface DocumentReference<E> {
-  readonly get: <A extends firestore.DocumentData>(
+export interface DocumentReference<E extends Error> {
+  readonly find: <R extends DataLoaderEnv, A extends firestore.DocumentData>(
     reference: firestore.DocumentReference<A>,
-  ) => TaskEither<E, firestore.DocumentSnapshot<A>>;
+  ) => ReaderTaskEither<R, E, Option<firestore.QueryDocumentSnapshot<A>>>;
 
   readonly set: <A extends firestore.DocumentData>(
     data: A,
-  ) => (reference: firestore.DocumentReference<A>) => TaskEither<E, firestore.WriteResult>;
+  ) => <R extends DataLoaderEnv>(
+    reference: firestore.DocumentReference<A>,
+  ) => ReaderTaskEither<R, E, firestore.WriteResult>;
 
   readonly setWith: <A extends firestore.DocumentData>(
     data: Partial<A>,
     options: firestore.SetOptions,
-  ) => (reference: firestore.DocumentReference<A>) => TaskEither<E, firestore.WriteResult>;
+  ) => <R extends DataLoaderEnv>(
+    reference: firestore.DocumentReference<A>,
+  ) => ReaderTaskEither<R, E, firestore.WriteResult>;
 
   readonly update: <A extends firestore.DocumentData>(
     data: UpdateData<A>,
     precondition?: firestore.Precondition,
-  ) => (reference: firestore.DocumentReference<A>) => TaskEither<E, firestore.WriteResult>;
+  ) => <R extends DataLoaderEnv>(
+    reference: firestore.DocumentReference<A>,
+  ) => ReaderTaskEither<R, E, firestore.WriteResult>;
 
   readonly remove: (
     precondition?: firestore.Precondition,
-  ) => <A>(reference: firestore.DocumentReference<A>) => TaskEither<E, firestore.WriteResult>;
+  ) => <R extends DataLoaderEnv, A extends firestore.DocumentData>(
+    reference: firestore.DocumentReference<A>,
+  ) => ReaderTaskEither<R, E, firestore.WriteResult>;
 }
 
-export type DocumentReferenceConfig<E> = {
+export type DocumentReferenceConfig<E extends Error> = {
   onError: (reason: unknown) => E;
 };
 
-export function mkDocumentReference<E>({
+export function mkDocumentReference<E extends Error>({
   onError,
 }: DocumentReferenceConfig<E>): DocumentReference<E> {
   const tryCatch = <A>(f: () => Promise<A>): TaskEither<E, A> => taskEither.tryCatch(f, onError);
 
-  const get: DocumentReference<E>['get'] = (reference) => {
-    return tryCatch(() => reference.get());
+  const find: DocumentReference<E>['find'] = (reference) => {
+    return mkFirestoreDataloader(reference.parent, onError).load(reference.id);
   };
 
   const set: DocumentReference<E>['set'] = (data) => (reference) => {
-    return tryCatch(() => reference.set(data));
+    return pipe(
+      reader.of(tryCatch(() => reference.set(data))),
+      readerTaskEither.chainFirstReaderK(() =>
+        mkFirestoreDataloader(reference.parent, onError).clear(reference.id),
+      ),
+    );
   };
 
   const setWith: DocumentReference<E>['setWith'] = (data, options) => (reference) => {
-    return tryCatch(() => reference.set(data, options));
+    return pipe(
+      reader.of(tryCatch(() => reference.set(data, options))),
+      readerTaskEither.chainFirstReaderK(() =>
+        mkFirestoreDataloader(reference.parent, onError).clear(reference.id),
+      ),
+    );
   };
 
   const update: DocumentReference<E>['update'] = (data, precondition) => (reference) => {
-    return tryCatch(() =>
-      // firestore checks for number of arguments here, can't pass undefined precondition
-      precondition ? reference.update(data, precondition) : reference.update(data),
+    return pipe(
+      reader.of(
+        tryCatch(() =>
+          // firestore checks for number of arguments here, can't pass undefined precondition
+          precondition ? reference.update(data, precondition) : reference.update(data),
+        ),
+      ),
+      readerTaskEither.chainFirstReaderK(() =>
+        mkFirestoreDataloader(reference.parent, onError).clear(reference.id),
+      ),
     );
   };
 
   const remove: DocumentReference<E>['remove'] = (precondition) => (reference) => {
-    return tryCatch(() => reference.delete(precondition));
+    return pipe(
+      reader.of(tryCatch(() => reference.delete(precondition))),
+      readerTaskEither.chainFirstReaderK(() =>
+        mkFirestoreDataloader(reference.parent, onError).clear(reference.id),
+      ),
+    );
   };
 
   return {
-    get,
+    find,
     set,
     setWith,
     update,
