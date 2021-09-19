@@ -1,26 +1,27 @@
 {
-  "name": "firestore-fp",
+  "name": "@dddenis/firestore-fp",
   "version": "0.1.0",
+  "description": "Firestore with fp-ts and DataLoader",
+  "homepage": "https://github.com/dddenis/firestore-fp",
+  "bugs": {
+    "url": "https://github.com/dddenis/firestore-fp/issues"
+  },
+  "license": "MIT",
   "author": {
     "name": "Denis Goncharenko",
     "email": "dddenjer@gmail.com"
   },
-  "license": "MIT",
+  "files": [
+    "./build"
+  ],
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
-  "engines": {
-    "node": "14"
-  },
-  "sideEffects": false,
-  "packageManager": "yarn@3.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/dddenis/firestore-fp.git"
   },
-  "bugs": {
-    "url": "https://github.com/dddenis/firestore-fp/issues"
-  },
-  "homepage": "https://github.com/dddenis/firestore-fp",
+  "packageManager": "yarn@3.0.2",
+  "sideEffects": false,
   "scripts": {
     "build": "yarn clean && tsc",
     "clean": "rm -rf ./build",
@@ -29,7 +30,7 @@
     "format:base": "prettier --config ./.prettierrc.ci.js --write",
     "lint": "yarn lint:base .",
     "lint:base": "eslint --config .eslintrc.ci.js --max-warnings=0",
-    "postinstall": "husky install"
+    "postinstallDev": "husky install"
   },
   "dependencies": {
     "ts-toolbelt": "^9.0.0"

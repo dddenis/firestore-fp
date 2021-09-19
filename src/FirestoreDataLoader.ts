@@ -30,6 +30,8 @@ function mkBatchLoadFn<E extends Error, A extends firestore.DocumentData, K exte
 ): BatchLoadFn<unknown, E, K, Option<firestore.QueryDocumentSnapshot<A>>> {
   return (ids: ReadonlyArray<K>) => {
     return pipe(
+      // max 10 `in` equality clauses
+      // https://firebase.google.com/docs/firestore/query-data/queries#in_not-in_and_array-contains-any
       readonlyArray.chunksOf(10)(ids),
       taskEither.traverseArray((idChunk) => {
         return pipe(collection.where(firestore.FieldPath.documentId(), 'in', idChunk), (query) =>
