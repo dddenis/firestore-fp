@@ -19,9 +19,9 @@ export interface DocumentReference<E extends Error> {
     reference: firestore.DocumentReference<A>,
   ) => ReaderTaskEither<R, E, firestore.WriteResult>;
 
-  readonly setWith: <A extends firestore.DocumentData>(
+  readonly setMerge: <A extends firestore.DocumentData>(
     data: Partial<A>,
-    options: firestore.SetOptions,
+    options?: Pick<firestore.SetOptions, 'mergeFields'>,
   ) => <R extends DataLoaderEnv>(
     reference: firestore.DocumentReference<A>,
   ) => ReaderTaskEither<R, E, firestore.WriteResult>;
@@ -62,9 +62,9 @@ export function mkDocumentReference<E extends Error>({
     );
   };
 
-  const setWith: DocumentReference<E>['setWith'] = (data, options) => (reference) => {
+  const setMerge: DocumentReference<E>['setMerge'] = (data, options) => (reference) => {
     return pipe(
-      reader.of(tryCatch(() => reference.set(data, options))),
+      reader.of(tryCatch(() => reference.set(data, { ...options, merge: true }))),
       readerTaskEither.chainFirstReaderK(() =>
         mkFirestoreDataloader(reference.parent, onError).clear(reference.id),
       ),
@@ -97,7 +97,7 @@ export function mkDocumentReference<E extends Error>({
   return {
     find,
     set,
-    setWith,
+    setMerge,
     update,
     remove,
   };
