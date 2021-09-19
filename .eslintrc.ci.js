@@ -6,7 +6,7 @@ module.exports = {
       files: ['*.ts', '*.tsx'],
       parserOptions: {
         tsconfigRootDir: __dirname,
-        project: ['tsconfig.json', 'tsconfig.eslint.json'],
+        project: ['./example/tsconfig.json', 'tsconfig.json', 'tsconfig.eslint.json'],
       },
       extends: ['plugin:@typescript-eslint/recommended-requiring-type-checking'],
       rules: {

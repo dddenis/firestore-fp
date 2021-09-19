@@ -21,12 +21,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {
         "name": "@dddenis/firestore-fp",
         "reference": "workspace:."
+      },
+      {
+        "name": "example",
+        "reference": "workspace:example"
       }
     ],
     "enableTopLevelFallback": true,
     "ignorePatternData": "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?)|$))$)",
     "fallbackExclusionList": [
-      ["@dddenis/firestore-fp", ["workspace:."]]
+      ["@dddenis/firestore-fp", ["workspace:."]],
+      ["example", ["workspace:example"]]
     ],
     "fallbackPool": [
     ],
@@ -119,6 +124,35 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@dddenis/firestore-fp", [
+        ["portal:../::locator=example%40workspace%3Aexample", {
+          "packageLocation": "./",
+          "packageDependencies": [
+            ["@dddenis/firestore-fp", "portal:../::locator=example%40workspace%3Aexample"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:260cbded26170ad9574d8af795f720c814500bad7a46f467f26b2daa1d7cb0583916d1f4f34948412d6d3e69e4f2781f1908be54ba6e3e97f1f75b8445445101#portal:../::locator=example%40workspace%3Aexample", {
+          "packageLocation": "./.yarn/__virtual__/@dddenis-firestore-fp-virtual-8edf2d2a39/1/",
+          "packageDependencies": [
+            ["@dddenis/firestore-fp", "virtual:260cbded26170ad9574d8af795f720c814500bad7a46f467f26b2daa1d7cb0583916d1f4f34948412d6d3e69e4f2781f1908be54ba6e3e97f1f75b8445445101#portal:../::locator=example%40workspace%3Aexample"],
+            ["@dddenis/dataloader-fp", "virtual:791edfd39c0edb2a422dd3601476ba9f144efa59190b6effdf61aa3586bdac0d29dcb755b1d3ef022eadbdb65982b4e6a95fc96149e0434484c3a1f4e7592f76#npm:0.1.1"],
+            ["@google-cloud/firestore", "npm:4.15.1"],
+            ["@types/dddenis__dataloader-fp", null],
+            ["@types/fp-ts", null],
+            ["@types/google-cloud__firestore", null],
+            ["fp-ts", "npm:2.11.2"],
+            ["ts-toolbelt", "npm:9.1.6"]
+          ],
+          "packagePeers": [
+            "@dddenis/dataloader-fp",
+            "@google-cloud/firestore",
+            "@types/dddenis__dataloader-fp",
+            "@types/fp-ts",
+            "@types/google-cloud__firestore",
+            "fp-ts"
+          ],
+          "linkType": "SOFT",
+        }],
         ["workspace:.", {
           "packageLocation": "./",
           "packageDependencies": [
@@ -1276,6 +1310,21 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["event-target-shim", "npm:5.0.1"]
           ],
           "linkType": "HARD",
+        }]
+      ]],
+      ["example", [
+        ["workspace:example", {
+          "packageLocation": "./example/",
+          "packageDependencies": [
+            ["example", "workspace:example"],
+            ["@dddenis/dataloader-fp", "virtual:791edfd39c0edb2a422dd3601476ba9f144efa59190b6effdf61aa3586bdac0d29dcb755b1d3ef022eadbdb65982b4e6a95fc96149e0434484c3a1f4e7592f76#npm:0.1.1"],
+            ["@dddenis/firestore-fp", "virtual:260cbded26170ad9574d8af795f720c814500bad7a46f467f26b2daa1d7cb0583916d1f4f34948412d6d3e69e4f2781f1908be54ba6e3e97f1f75b8445445101#portal:../::locator=example%40workspace%3Aexample"],
+            ["@google-cloud/firestore", "npm:4.15.1"],
+            ["dataloader", "npm:2.0.0"],
+            ["fp-ts", "npm:2.11.2"],
+            ["typescript", "patch:typescript@npm%3A4.4.3#~builtin<compat/typescript>::version=4.4.3&hash=32657b"]
+          ],
+          "linkType": "SOFT",
         }]
       ]],
       ["execa", [

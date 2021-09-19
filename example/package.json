@@ -1,0 +1,16 @@
+{
+  "name": "example",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@dddenis/dataloader-fp": "0.1.1",
+    "@dddenis/firestore-fp": "portal:../",
+    "@google-cloud/firestore": "4.15.1",
+    "dataloader": "2.0.0",
+    "fp-ts": "2.11.2"
+  },
+  "devDependencies": {
+    "typescript": "4.4.3"
+  }
+}

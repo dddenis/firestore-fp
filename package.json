@@ -22,15 +22,19 @@
   },
   "packageManager": "yarn@3.0.2",
   "sideEffects": false,
+  "workspaces": [
+    "./example"
+  ],
   "scripts": {
     "build": "yarn clean && tsc",
+    "build:ci": "yarn build && yarn w:example build",
     "clean": "rm -rf ./build",
-    "dev": "docker-compose --file ./dev/docker-compose.yml --project-name @dddenis/firestore-fp",
     "format": "yarn format:base .",
     "format:base": "prettier --config ./.prettierrc.ci.js --write",
     "lint": "yarn lint:base .",
     "lint:base": "eslint --config .eslintrc.ci.js --max-warnings=0",
-    "postinstallDev": "husky install"
+    "postinstallDev": "husky install",
+    "w:example": "yarn workspace example"
   },
   "dependencies": {
     "ts-toolbelt": "^9.0.0"

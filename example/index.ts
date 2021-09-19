@@ -1,10 +1,3 @@
-# Firestore fp-ts bindings
-
-Exposed API is using [DataLoader](https://github.com/graphql/dataloader) underneath.
-
-### Example
-
-```typescript
 import { mkCollectionReference, mkDocumentReference } from '@dddenis/firestore-fp';
 import { DocumentReference, Firestore } from '@google-cloud/firestore';
 import { option, readerTaskEither } from 'fp-ts';
@@ -80,4 +73,3 @@ pipe(
 
 // remove document
 pipe(document, documentReference.remove());
-```

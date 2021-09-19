@@ -1,3 +1,5 @@
+.direnv/
 .yarn/
+build/
 
 .pnp.cjs
