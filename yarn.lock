@@ -41,6 +41,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@dddenis/dataloader-fp@npm:0.1.1":
+  version: 0.1.1
+  resolution: "@dddenis/dataloader-fp@npm:0.1.1"
+  peerDependencies:
+    dataloader: ^2.0.0
+    fp-ts: ^2.10.0
+  checksum: b7993293081b5a96f2296b52dbd7b0ba8a111454d5b62f95ec9bd40e8506ec5b5c639ada11b35fe5e3f9ef963804b889f0b783d94f4e37378360f357a6d87904
+  languageName: node
+  linkType: hard
+
 "@eslint/eslintrc@npm:^0.4.3":
   version: 0.4.3
   resolution: "@eslint/eslintrc@npm:0.4.3"
@@ -669,7 +679,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dataloader@npm:^2.0.0":
+"dataloader@npm:2.0.0":
   version: 2.0.0
   resolution: "dataloader@npm:2.0.0"
   checksum: 9f10b9d2e35225b08a72435facfe40c0c124e329f43bd0fe4d67411ee667d12145f7ce63f9b74f73af8556dc6a98bae59147a5cca2171315dc1de509d4db04c0
@@ -1057,10 +1067,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "firestore-fp@workspace:."
   dependencies:
+    "@dddenis/dataloader-fp": 0.1.1
     "@google-cloud/firestore": 4.15.1
     "@typescript-eslint/eslint-plugin": 4.31.1
     "@typescript-eslint/parser": 4.31.1
-    dataloader: ^2.0.0
+    dataloader: 2.0.0
     eslint: 7.32.0
     eslint-config-prettier: 8.3.0
     fp-ts: 2.11.2
@@ -1071,6 +1082,7 @@ __metadata:
     ts-toolbelt: ^9.0.0
     typescript: 4.4.3
   peerDependencies:
+    "@dddenis/dataloader-fp": ^0.1.0
     "@google-cloud/firestore": ^4.0.0
     fp-ts: ^2.11.0
   languageName: unknown

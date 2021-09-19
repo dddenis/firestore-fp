@@ -35,6 +35,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {
           "packageLocation": "./",
           "packageDependencies": [
+            ["@dddenis/dataloader-fp", "virtual:0bdbe461af4cab97cc45a3ab0229d4a0b84b11675d8b608f45223daa1e0e4d58690e135d5d4e778b95935145900dd9eba0eab196d17d420071819bf2986c73fc#npm:0.1.1"],
             ["@google-cloud/firestore", "npm:4.15.1"],
             ["@typescript-eslint/eslint-plugin", "virtual:0bdbe461af4cab97cc45a3ab0229d4a0b84b11675d8b608f45223daa1e0e4d58690e135d5d4e778b95935145900dd9eba0eab196d17d420071819bf2986c73fc#npm:4.31.1"],
             ["@typescript-eslint/parser", "virtual:0bdbe461af4cab97cc45a3ab0229d4a0b84b11675d8b608f45223daa1e0e4d58690e135d5d4e778b95935145900dd9eba0eab196d17d420071819bf2986c73fc#npm:4.31.1"],
@@ -87,6 +88,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/helper-validator-identifier", "npm:7.14.9"],
             ["chalk", "npm:2.4.2"],
             ["js-tokens", "npm:4.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@dddenis/dataloader-fp", [
+        ["npm:0.1.1", {
+          "packageLocation": "./.yarn/cache/@dddenis-dataloader-fp-npm-0.1.1-8564827c72-b799329308.zip/node_modules/@dddenis/dataloader-fp/",
+          "packageDependencies": [
+            ["@dddenis/dataloader-fp", "npm:0.1.1"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:0bdbe461af4cab97cc45a3ab0229d4a0b84b11675d8b608f45223daa1e0e4d58690e135d5d4e778b95935145900dd9eba0eab196d17d420071819bf2986c73fc#npm:0.1.1", {
+          "packageLocation": "./.yarn/__virtual__/@dddenis-dataloader-fp-virtual-3b0037fdcd/0/cache/@dddenis-dataloader-fp-npm-0.1.1-8564827c72-b799329308.zip/node_modules/@dddenis/dataloader-fp/",
+          "packageDependencies": [
+            ["@dddenis/dataloader-fp", "virtual:0bdbe461af4cab97cc45a3ab0229d4a0b84b11675d8b608f45223daa1e0e4d58690e135d5d4e778b95935145900dd9eba0eab196d17d420071819bf2986c73fc#npm:0.1.1"],
+            ["@types/dataloader", null],
+            ["@types/fp-ts", null],
+            ["dataloader", "npm:2.0.0"],
+            ["fp-ts", "npm:2.11.2"]
+          ],
+          "packagePeers": [
+            "@types/dataloader",
+            "@types/fp-ts",
+            "dataloader",
+            "fp-ts"
           ],
           "linkType": "HARD",
         }]
@@ -1340,6 +1367,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["firestore-fp", "workspace:."],
+            ["@dddenis/dataloader-fp", "virtual:0bdbe461af4cab97cc45a3ab0229d4a0b84b11675d8b608f45223daa1e0e4d58690e135d5d4e778b95935145900dd9eba0eab196d17d420071819bf2986c73fc#npm:0.1.1"],
             ["@google-cloud/firestore", "npm:4.15.1"],
             ["@typescript-eslint/eslint-plugin", "virtual:0bdbe461af4cab97cc45a3ab0229d4a0b84b11675d8b608f45223daa1e0e4d58690e135d5d4e778b95935145900dd9eba0eab196d17d420071819bf2986c73fc#npm:4.31.1"],
             ["@typescript-eslint/parser", "virtual:0bdbe461af4cab97cc45a3ab0229d4a0b84b11675d8b608f45223daa1e0e4d58690e135d5d4e778b95935145900dd9eba0eab196d17d420071819bf2986c73fc#npm:4.31.1"],

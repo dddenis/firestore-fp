@@ -1,9 +1,9 @@
+import type { DataLoaderEnv } from '@dddenis/dataloader-fp';
 import type * as firestore from '@google-cloud/firestore';
 import { either, option, reader, readerTaskEither, taskEither } from 'fp-ts';
 import { pipe } from 'fp-ts/function';
 import type { ReaderTaskEither } from 'fp-ts/ReaderTaskEither';
 import type { TaskEither } from 'fp-ts/TaskEither';
-import type { DataLoaderEnv } from './DataLoader';
 import { mkFirestoreDataloader } from './FirestoreDataLoader';
 
 export interface CollectionReference<E extends Error> {

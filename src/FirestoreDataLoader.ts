@@ -1,14 +1,14 @@
-import * as firestore from '@google-cloud/firestore';
-import { either, option, reader, readonlyArray, taskEither } from 'fp-ts';
-import { flow, pipe } from 'fp-ts/function';
-import type { Option } from 'fp-ts/Option';
 import {
   BatchLoadFn,
   DataLoader,
   DataLoaderEnv,
+  getDataLoader,
   mapEntitiesToIds,
-  mkDataLoader,
-} from './DataLoader';
+} from '@dddenis/dataloader-fp';
+import * as firestore from '@google-cloud/firestore';
+import { either, option, reader, readonlyArray, taskEither } from 'fp-ts';
+import { flow, pipe } from 'fp-ts/function';
+import type { Option } from 'fp-ts/Option';
 
 export function mkFirestoreDataloader<
   E extends Error,
@@ -18,7 +18,7 @@ export function mkFirestoreDataloader<
   collection: firestore.CollectionReference<A>,
   onError: (reason: unknown) => E,
 ): DataLoader<DataLoaderEnv, E, K, Option<firestore.QueryDocumentSnapshot<A>>> {
-  return mkDataLoader({
+  return getDataLoader({
     batchLoad: mkBatchLoadFn(collection, onError),
     key: collection.path,
   });
