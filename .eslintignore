@@ -1,5 +1,7 @@
 .direnv/
+.vim/
+.vscode/
 .yarn/
 build/
 
-.pnp.cjs
+.pnp.*

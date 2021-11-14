@@ -20,19 +20,19 @@
     "type": "git",
     "url": "https://github.com/dddenis/firestore-fp.git"
   },
-  "packageManager": "yarn@3.0.2",
   "sideEffects": false,
+  "packageManager": "yarn@3.1.0",
   "workspaces": [
     "./example"
   ],
   "scripts": {
-    "build": "yarn clean && tsc",
+    "build": "yarn clean --quiet && tsc",
     "build:ci": "yarn build && yarn w:example build",
-    "clean": "rm -rf ./build",
+    "clean": "git clean -dfX ./build ./src",
     "format": "yarn format:base .",
-    "format:base": "prettier --config ./.prettierrc.ci.js --write",
+    "format:base": "prettier --config .prettierrc.ci.cjs --write",
     "lint": "yarn lint:base .",
-    "lint:base": "eslint --config .eslintrc.ci.js --max-warnings=0",
+    "lint:base": "eslint --config .eslintrc.ci.cjs --max-warnings=0",
     "postinstallDev": "husky install",
     "w:example": "yarn workspace example"
   },
@@ -40,19 +40,20 @@
     "ts-toolbelt": "^9.0.0"
   },
   "devDependencies": {
-    "@dddenis/dataloader-fp": "0.1.1",
-    "@google-cloud/firestore": "4.15.1",
-    "@typescript-eslint/eslint-plugin": "4.31.1",
-    "@typescript-eslint/parser": "4.31.1",
-    "dataloader": "2.0.0",
+    "@commitlint/cli": "14.1.0",
+    "@commitlint/config-conventional": "14.1.0",
+    "@dddenis/dataloader-fp": "0.1.2",
+    "@google-cloud/firestore": "4.0.0",
+    "@typescript-eslint/eslint-plugin": "4.33.0",
+    "@typescript-eslint/parser": "4.33.0",
     "eslint": "7.32.0",
     "eslint-config-prettier": "8.3.0",
-    "fp-ts": "2.11.2",
-    "husky": "7.0.2",
-    "lint-staged": "11.1.2",
-    "prettier": "2.4.0",
-    "prettier-plugin-organize-imports": "2.3.3",
-    "typescript": "4.4.3"
+    "fp-ts": "2.11.0",
+    "husky": "7.0.4",
+    "lint-staged": "11.2.6",
+    "prettier": "2.4.1",
+    "prettier-plugin-organize-imports": "2.3.4",
+    "typescript": "4.4.4"
   },
   "peerDependencies": {
     "@dddenis/dataloader-fp": "^0.1.0",
