@@ -5,5 +5,5 @@
     "allowJs": true,
     "noEmit": true
   },
-  "include": ["**/.*.js", "**/*.js"]
+  "include": ["**/*.cjs", "**/*.js", "**/.*.cjs", "**/.*.js"]
 }

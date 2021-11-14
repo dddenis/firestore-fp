@@ -5,7 +5,7 @@
   };
 
   outputs = { self, devshell, flake-utils, nixpkgs }:
-    let overlay = _: prev: { nodejs = prev.nodejs-14_x; };
+    let overlay = _: prev: { nodejs = prev.nodejs-16_x; };
 
     in flake-utils.lib.simpleFlake {
       inherit self nixpkgs;
