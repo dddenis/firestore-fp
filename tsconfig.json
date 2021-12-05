@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "ES2020",
     "lib": ["ES2020"],
-    "module": "CommonJS",
     "moduleResolution": "Node",
     "declaration": true,
     "esModuleInterop": true,
@@ -14,7 +13,7 @@
     "sourceMap": true,
     "strict": true,
 
-    "outDir": "./build",
+    "noEmit": true,
     "rootDir": "./src"
   },
   "include": ["./src"]

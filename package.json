@@ -14,8 +14,12 @@
   "files": [
     "./build"
   ],
-  "main": "./build/index.js",
-  "types": "./build/index.d.ts",
+  "main": "./build/cjs/index.js",
+  "module": "./build/esm/index.js",
+  "exports": {
+    "require": "./build/cjs/index.js",
+    "import": "./build/esm/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/dddenis/firestore-fp.git"
@@ -26,8 +30,10 @@
     "./example"
   ],
   "scripts": {
-    "build": "yarn clean --quiet && tsc",
+    "build": "yarn build:cjs && yarn build:esm",
     "build:ci": "yarn build && yarn w:example build",
+    "build:cjs": "tsc --project ./tsconfig.cjs.json",
+    "build:esm": "tsc --project ./tsconfig.esm.json",
     "clean": "git clean -dfX ./build ./src",
     "format": "yarn format:base .",
     "format:base": "prettier --config .prettierrc.ci.cjs --write",
