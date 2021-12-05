@@ -1,6 +1,6 @@
 {
   "name": "@dddenis/firestore-fp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Firestore with fp-ts and DataLoader",
   "homepage": "https://github.com/dddenis/firestore-fp",
   "bugs": {
